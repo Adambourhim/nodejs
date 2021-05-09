@@ -5,10 +5,15 @@ const app = express();
 doenv.config();
 
 app.get("/", (req, res) => {
-  console.log(req);
+  console.log(req.query);
   res.send("Hello server !");
 });
 
+app.get("/:id", (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  res.send(id);
+});
 const Port = process.env.PORT;
 
 app.listen(Port, () => {
